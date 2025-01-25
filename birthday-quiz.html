@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title> Birthday Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffe4e1, #fadadd);
+      color: #333;
+      overflow: hidden;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    h1 {
+      color: #ff6b6b;
+      font-size: 2.5em;
+    }
+    .question {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff9a9e;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #ff6b6b;
+    }
+    .hidden {
+      display: none;
+    }
+    .surprise {
+      font-size: 1.5em;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Happy Birthday, Alangkrita!<3</h1>
+    <div id="quiz">
+      <p class="question" id="question">What’s your favorite color?</p>
+      <div class="options" id="options">
+        <button onclick="checkAnswer(1)">Red</button>
+        <button onclick="checkAnswer(2)">Blue</button>
+        <button onclick="checkAnswer(3)">Pink</button>
+        <button onclick="checkAnswer(4)">Green</button>
+      </div>
+    </div>
+    <div id="surprise" class="hidden">
+      <p class="surprise">You did it! 🎉</p>
+      <p class="surprise">Happy Birthday, Alangkrita! I hope this little quiz made you smile. ❤️</p>
+      <a href="birthday-message.html" style="text-decoration: none;">
+        <button>See Your Special Message</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "What’s your favorite color?",
+        answers: ["Red", "Blue", "Pink", "Green"],
+        correct: 3
+      },
+      {
+        question: "Which Animal do you like the most?",
+        answers: ["Humans", "Cats", "Hamsters", "Dogs"],
+        correct: 2
+      },
+      {
+        question: "What’s my favorite thing about you?",
+        answers: ["Your smile", "Your kindness", "Your humor", "Everything"],
+        correct: 4
+      }
+    ];
+
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+      const quiz = document.getElementById("quiz");
+      const questionElement = document.getElementById("question");
+      const optionsElement = document.getElementById("options");
+
+      if (currentQuestion < questions.length) {
+        const current = questions[currentQuestion];
+        questionElement.textContent = current.question;
+        optionsElement.innerHTML = "";
+
+        current.answers.forEach((answer, index) => {
+          const button = document.createElement("button");
+          button.textContent = answer;
+          button.onclick = () => checkAnswer(index + 1);
+          optionsElement.appendChild(button);
+        });
+      } else {
+        quiz.classList.add("hidden");
+        document.getElementById("surprise").classList.remove("hidden");
+      }
+    }
+
+    function checkAnswer(selected) {
+      const correct = questions[currentQuestion].correct;
+      if (selected === correct) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        alert("Oops, try again!");
+      }
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

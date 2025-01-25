@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #111;
+        }
+        .container {
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 50px;
+            color: #ff66b2;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 30px;
+            color: #ff99cc;
+        }
+        p {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #fff;
+        }
+        .heart {
+            font-size: 100px;
+            color: #ff66b2;
+            margin-top: 20px;
+        }
+        @keyframes starAnimation {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 500px 500px;
+            }
+        }
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/Users/kabishkashyapmahanta/Downloads');
+            background-size: 300% 300%;
+            animation: starAnimation 20s infinite linear;
+            z-index: 0;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <h1>Happy Birthday, Miss Angel!</h1>
+        <h2>You are the light of my life, and today, it's your special day!</h2>
+        <p>I hope your day is filled with as much love, joy, and happiness as you bring into my life. I love you more than words can express! ❤️</p>
+        <div class="heart">❤️</div>
+        <a href="birthday-quiz.html" style="text-decoration: none;">
+            <button>Take the Birthday Quiz Again</button>
+        </a>
+    </div>
+    <audio id="birthdaySong" autoplay>
+        <source src="https://example.com/birthday-song.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById('birthdaySong');
+            audio.play();
+        };
+    </script>
+</body>
+</html>
